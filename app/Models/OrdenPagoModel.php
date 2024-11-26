@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class OrdenPagoModel extends Model
 {
-    protected $table            = 'ordenpagos';
+    protected $table            = 'ordenes_pago';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

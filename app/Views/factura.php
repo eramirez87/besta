@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>TEST - Inicio</title>
+    <title>TEST - Factura</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/60d09f2d83.js" crossorigin="anonymous"></script>
@@ -33,35 +33,52 @@
             <div class="col-12">
                 <div class="card card-primary">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                  <label for="">Numero de Factura</label>
+                                  <?= $factura['numero_factura'] ?>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                  <label for="">Fecha de emision</label>
+                                  <?= $factura['fecha_emision'] ?>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                  <label for="">Total</label>
+                                  <?= $factura['monto_total'] ?>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                  <label for="">Estatus</label>
+                                  <?= $factura['estatus'] ?>
+                                </div>
+                            </div>
+                        </div>
                         <table id="master" class="table table-sm table-hover">
                             <thead>
                                 <tr>
-                                    <th>Factura</th>
-                                    <th>Emitido</th>
-                                    <th>Abonado</th>
-                                    <th>Total</th>
-                                    <th>Estatus</th>
-                                    <th>Cliente</th>
-                                    <th>&nbsp;</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Metodo</th>
+                                    <th>Referencia</th>
                                 </tr>
                             </thead>
-                            <tbody id="master_tbody">
-                                <tr id="master_tbody_tr">
-                                    <td data-field='numero_factura'>...</td>
-                                    <td data-field='fecha_emision_LATAM'>...</td>
-                                    <td data-field='ABONADO'>...</td>
-                                    <td data-field='monto_total_LATAM'>...</td>
-                                    <td data-field='estatus'>...</td>
-                                    <td data-field='cliente_nombre'>...</td>
-                                    <td class="text-right">
-                                        <a href="" class="btn btn-secondary btn-sm">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </a>
-                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                                            <i class="fa-regular fa-window-maximize"></i>
-                                        </button>
-                                    </td>
+                            <tbody>
+                                <?php foreach($factura['ordenesDePago'] as $op): ?>
+                                <tr>
+                                    <td><?= $op['fecha_pago'] ?></td>
+                                    <td><?= $op['monto_pago'] ?></td>
+                                    <td><?= $op['metodo_pago'] ?></td>
+                                    <td><?= $op['referencia_pago'] ?></td>
                                 </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>  

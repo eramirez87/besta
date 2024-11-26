@@ -73,6 +73,7 @@ function AddRow(data,index){
             value += ' MXN';
         }
         tr.find('td[data-field=' + e + ']').text(value);
+        tr.find('a').attr('href','factura/' + data.factura_id);
         tr.appendTo('#master_tbody');
     });
 }

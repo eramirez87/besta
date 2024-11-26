@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\FacturaModel;
+use App\Models\OrdenPagoModel;
 
 class FacturaController extends BaseController
 {
@@ -37,6 +39,24 @@ class FacturaController extends BaseController
             ], ResponseInterface::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    public function show($factura_id) {
+        $facturaModel = new FacturaModel();
+        $opModel = new OrdenPagoModel();
+        $factura = $facturaModel->where('numero_factura', $factura_id)->first();
+        if ($factura) {
+            $ordenesDePago = $opModel->where('factura_id', $factura['id'])->findAll();
+            $factura['ordenesDePago'] = $ordenesDePago;
+            return view('factura',compact('factura'));
+
+
+
+        } else {
+            return $this->response->setStatusCode(404)->setJSON(['error' => 'Factura no encontrada']);
+        }
+    }
+    
+    
     public function getAll()
     {
         $db = \Config\Database::connect();
