@@ -11,10 +11,12 @@ class CreateOrdenesPagoTable extends Migration
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'factura_id' => [
                 'type'       => 'INT',
+                'unsigned'       => true,
                 'unsigned'   => true,
             ],
             'fecha_pago' => [
@@ -44,7 +46,7 @@ class CreateOrdenesPagoTable extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('factura_id', 'facturas', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('ordenes_pago');
+        $this->forge->createTable('ordenes_pago', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()

@@ -11,10 +11,12 @@ class CreateFacturasTable extends Migration
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'cliente_id' => [
                 'type'       => 'INT',
+                'unsigned'   => true,
                 'unsigned'   => true,
             ],
             'numero_factura' => [
@@ -45,7 +47,7 @@ class CreateFacturasTable extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('cliente_id', 'clientes', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('facturas');
+        $this->forge->createTable('facturas', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()

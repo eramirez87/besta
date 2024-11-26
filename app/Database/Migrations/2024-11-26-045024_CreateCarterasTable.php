@@ -11,6 +11,7 @@ class CreateCarterasTable extends Migration
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nombre' => [
@@ -31,7 +32,7 @@ class CreateCarterasTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('carteras');
+        $this->forge->createTable('carteras', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()

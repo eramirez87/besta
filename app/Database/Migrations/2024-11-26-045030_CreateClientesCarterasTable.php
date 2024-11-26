@@ -16,16 +16,18 @@ class CreateClientesCarterasTable extends Migration
             'cliente_id' => [
                 'type'       => 'INT',
                 'unsigned'   => true,
+                'unsigned'   => true,
             ],
             'cartera_id' => [
                 'type'       => 'INT',
+                'unsigned'   => true,
                 'unsigned'   => true,
             ],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('cliente_id', 'clientes', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('cartera_id', 'carteras', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('clientes_carteras');
+        $this->forge->createTable('clientes_carteras', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()

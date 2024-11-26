@@ -11,6 +11,7 @@ class CreateClientesTable extends Migration
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nombre' => [
@@ -40,7 +41,7 @@ class CreateClientesTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('clientes');
+        $this->forge->createTable('clientes', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()
