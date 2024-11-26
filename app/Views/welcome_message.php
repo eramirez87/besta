@@ -38,6 +38,7 @@
                                 <tr>
                                     <th>Factura</th>
                                     <th>Emitido</th>
+                                    <th>Abonado</th>
                                     <th>Total</th>
                                     <th>Estatus</th>
                                     <th>Cliente</th>
@@ -48,6 +49,7 @@
                                 <tr id="master_tbody_tr">
                                     <td data-field='numero_factura'>...</td>
                                     <td data-field='fecha_emision_LATAM'>...</td>
+                                    <td data-field='ABONADO'>...</td>
                                     <td data-field='monto_total_LATAM'>...</td>
                                     <td data-field='estatus'>...</td>
                                     <td data-field='cliente_nombre'>...</td>

@@ -12,7 +12,10 @@ SELECT
         c.nombre AS cliente_nombre,
         c.email AS cliente_email,
         c.telefono AS cliente_telefono,
-        c.direccion AS cliente_direccion
+        c.direccion AS cliente_direccion,
+        FORMAT(IFNULL((SELECT SUM(monto_pago) 
+                       FROM ordenes_pago 
+                       WHERE factura_id = f.id), 0), 2) AS ABONADO
     FROM facturas f
     INNER JOIN clientes c ON f.cliente_id = c.id
     HAVING f.estatus = 'pendiente';

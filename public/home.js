@@ -69,6 +69,9 @@ function AddRow(data,index){
         if( e == 'monto_total_LATAM' ){
             value += ' MXN';
         }
+        if( e == 'ABONADO' ){   
+            value += ' MXN';
+        }
         tr.find('td[data-field=' + e + ']').text(value);
         tr.appendTo('#master_tbody');
     });
