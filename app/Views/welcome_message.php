@@ -48,7 +48,7 @@
                                     <td data-field='numero_factura'>...</td>
                                     <td data-field='fecha_emision'>...</td>
                                     <td data-field='monto_total'>...</td>
-                                    <td data-field='factura_estatus'>...</td>
+                                    <td data-field='estatus'>...</td>
                                     <td data-field='cliente_nombre'>...</td>
                                     <td>...</td>
                                 </tr>
