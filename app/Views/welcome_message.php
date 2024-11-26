@@ -11,6 +11,7 @@
     <title>TEST - Inicio</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/60d09f2d83.js" crossorigin="anonymous"></script>
     <script src="home.js"></script>
 </head>
 <body>
@@ -32,7 +33,7 @@
             <div class="col-12">
                 <div class="card card-primary">
                     <div class="card-body">
-                        <table id="master" class="table">
+                        <table id="master" class="table table-sm table-hover">
                             <thead>
                                 <tr>
                                     <th>Factura</th>
@@ -46,11 +47,15 @@
                             <tbody id="master_tbody">
                                 <tr id="master_tbody_tr">
                                     <td data-field='numero_factura'>...</td>
-                                    <td data-field='fecha_emision'>...</td>
-                                    <td data-field='monto_total'>...</td>
+                                    <td data-field='fecha_emision_LATAM'>...</td>
+                                    <td data-field='monto_total_LATAM'>...</td>
                                     <td data-field='estatus'>...</td>
                                     <td data-field='cliente_nombre'>...</td>
-                                    <td>...</td>
+                                    <td class="text-right">
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fa-regular fa-window-maximize"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -59,6 +64,68 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h5 class="modal-title" id="exampleModalLabel">Crear/Editar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form class="modal-body" id="modal-form" onsubmit="return submitForm(event)">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Cliente</label>
+                        <select name="cliente_id" class="form-control"></select>
+                      <small id="helpId" class="text-muted">Help text</small>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                      <label>Factura</label>
+                      <input type="number"
+                        class="form-control" name="numero_factura" aria-describedby="helpId" placeholder="">
+                      <small id="helpId" class="form-text text-muted">Si existe edita, si no, crea</small>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                      <label>Fecha de emision</label>
+                      <input type="date"
+                        class="form-control" name="fecha_emision" aria-describedby="helpId" placeholder="">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                      <label>Total</label>
+                      <input type="number" step="0.01"
+                        class="form-control" name="monto_total" aria-describedby="helpId" placeholder="">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Estatus</label>
+                        <select name="estatus" class="form-control">
+                            <option value="pendiente">pendiente</option>
+                            <option value="pagada">pagada</option>
+                            <option value="cancelada">cancelada</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button form="modal-form" type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

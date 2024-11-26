@@ -9,6 +9,10 @@ class FacturaController extends BaseController
 {
     public function create(){
         $data = $this->request->getPost();
+
+        $data['created_at'] = date('Y-m-d');
+        $data['updated_at'] = date('Y-m-d');
+
         $db = \Config\Database::connect();
         $query = $db->query(
             'CALL updateOrCreateInvoice(?, ?, ?, ?, ?, ?, ?)', [

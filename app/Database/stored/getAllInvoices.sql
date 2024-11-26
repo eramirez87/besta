@@ -3,9 +3,12 @@ BEGIN
 SELECT 
         f.id AS factura_id,
         f.numero_factura,
-        DATE_FORMAT(f.fecha_emision, '%d/%m/%Y') AS fecha_emision,
+        DATE_FORMAT(f.fecha_emision, '%d/%m/%Y') AS fecha_emision_LATAM,
+        f.fecha_emision,
+        FORMAT(f.monto_total, 2) AS monto_total_LATAM,
         f.monto_total,
         f.estatus,
+        c.id AS cliente_id,
         c.nombre AS cliente_nombre,
         c.email AS cliente_email,
         c.telefono AS cliente_telefono,

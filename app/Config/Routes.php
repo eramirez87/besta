@@ -7,4 +7,5 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/api/getFacturas', 'FacturaController::getAll');
-$routes->post('/api/createFactura','FacturasController::create');
+$routes->post('/api/createFactura','FacturaController::create');
+$routes->get('/api/getClientes', 'ClienteController::getAll');
